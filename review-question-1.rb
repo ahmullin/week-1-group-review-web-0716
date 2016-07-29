@@ -1,5 +1,9 @@
 ## QUESTION 1
+require 'pry'
 
+
+
+def pokemon
 pokemon = [
   {
     "id": 1,
@@ -59,6 +63,53 @@ pokemon = [
   ]
 }
 ]
+end
+
+  def get_url
+    result = get_pokemon_hash[:abilities][0][:ability][:url]
+    binding.pry
+  end
+
+
+
+  def get_pokemon_hash
+    pokemon.detect do |hash|
+      hash[:name] == "bulbasaur"
+      # hash[:abilities][0][:ability][:url]
+      end
+  end
+
+  def hash_getter
+    pokemon.select do |hash|
+      hash[:base_experience] > 40
+    end
+  end
+
+
+  def first_base_over_forty
+    hash_getter[0][:name]
+  end
+
+  def all_base_over_forty
+    hash_getter.collect do |hash|
+      hash[:name]
+    end
+  end
+
+  def all_names
+    pokemon.collect do |hash|
+      hash[:name]
+    end
+  end
+
+
+
+first_base_over_forty
+get_url
+
+
+
+
 
 
 # How would you get the url for Bulbasaur's ability?
